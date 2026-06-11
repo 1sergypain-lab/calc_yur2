@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Калькулятор юридических услуг v2 | Рассчитать стоимость онлайн</title>
+  <meta name="description" content="Улучшенный онлайн-калькулятор юридических услуг. Рассчитайте стоимость абонентского обслуживания или разовых услуг за 1 минуту." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles-v2.css">
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <h1>⚖️ Калькулятор юридических услуг v2</h1>
+      <p class="subtitle">Улучшенная версия с модульной архитектурой</p>
+    </header>
+
+    <section class="calculator">
+      <div class="left" id="left-panel">
+        <form id="calculator-form" class="card" onsubmit="return false" aria-label="Параметры расчёта">
+          <h2>Тип обслуживания</h2>
+          <div class="switch-cards" role="radiogroup" aria-label="Тип обслуживания">
+            <label class="radio-card selected">
+              <input type="radio" name="serviceType" value="subscription" checked>
+              <div class="card-title">АБОНЕНТСКОЕ ОБСЛУЖИВАНИЕ</div>
+              <div class="card-sub">Ежемесячное юридическое сопровождение</div>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="serviceType" value="oneoff">
+              <div class="card-title">РАЗОВЫЕ УСЛУГИ</div>
+              <div class="card-sub">Единоразовое выполнение задач</div>
+            </label>
+          </div>
+
+          <div id="subscription-block">
+            <h3>📍 Ваш регион</h3>
+            <select id="region" aria-label="Регион"></select>
+
+            <h3>Выберите пакет обслуживания</h3>
+            <div id="packages" class="packages"></div>
+
+            <h3>Дополнительные опции</h3>
+            <div id="extras" class="extras"></div>
+
+            <h3>💰 Госпошлины и расходы</h3>
+            <label class="checkbox"><input type="checkbox" id="include-fees"> Включить госпошлины и расходы в расчет</label>
+
+            <h3>Налогообложение</h3>
+            <div id="vat" class="vat"></div>
+
+            <h3>Срок договора</h3>
+            <select id="period" aria-label="Срок договора">
+              <option value="1">1 месяц (без скидки)</option>
+              <option value="3">3 месяца (-10% скидка)</option>
+              <option value="6">6 месяцев (-15% скидка)</option>
+              <option value="12">12 месяцев (-25% скидка)</option>
+            </select>
+          </div>
+
+          <div id="oneoff-block" style="display:none">
+            <h3>📍 Ваш регион</h3>
+            <select id="region-oneoff" aria-label="Регион разовые"></select>
+
+            <h3>Выберите услуги</h3>
+            <div id="oneoff-services" class="extras"></div>
+
+            <h3>⚡ Срочность выполнения</h3>
+            <div id="urgency-oneoff" class="urgency"></div>
+
+            <h3>💰 Госпошлины и расходы</h3>
+            <label class="checkbox"><input type="checkbox" id="include-fees-oneoff"> Включить госпошлины и расходы в расчет</label>
+
+            <h3>Налогообложение</h3>
+            <div id="vat-oneoff" class="vat"></div>
+          </div>
+
+          <button id="calcBtn" class="btn primary" type="button">РАССЧИТАТЬ СТОИМОСТЬ</button>
+        </form>
+      </div>
+
+      <aside class="right" id="right-panel">
+        <div class="card summary" aria-live="polite">
+          <div class="summary-title">Ориентировочная стоимость</div>
+          <div class="summary-price" id="summary-price">0 ₽</div>
+          <div class="summary-period" id="summary-period">/месяц или единоразово</div>
+        </div>
+
+        <div class="card details" id="details">
+          <h3>Детализация расчета</h3>
+          <div id="details-lines" class="details-lines">Параметры не выбраны</div>
+        </div>
+
+        <div class="card actions no-print">
+          <button id="proposalBtn" class="btn primary">ПОЛУЧИТЬ ПРЕДЛОЖЕНИЕ</button>
+          <button id="whatsappBtn" class="btn">💬 WhatsApp</button>
+          <button id="telegramBtn" class="btn">💬 Telegram</button>
+        </div>
+      </aside>
+    </section>
+
+    <section class="bottom card no-print">
+      <ul class="benefits">
+        <li>✓ Расчёт без регистрации</li>
+        <li>✓ Персональное КП за 30 минут</li>
+        <li>✓ Фиксированная цена в договоре</li>
+        <li>✓ Без скрытых платежей</li>
+        <li>✅ Модульная архитектура</li>
+        <li>✅ Обработка ошибок</li>
+        <li>✅ TypeScript-подобная структура</li>
+        <li>✅ Безопасность улучшена</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Модульная загрузка скриптов -->
+  <script src="config.js"></script>
+  <script src="data.js"></script>
+  <script src="utils.js"></script>
+  <script src="calculations.js"></script>
+  <script src="ui.js"></script>
+  <script src="pdf.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
